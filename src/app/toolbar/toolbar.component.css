@@ -1,0 +1,9 @@
+.example-fill-remaining-space {
+flex: 1 1 auto;
+}
+
+.mainMenuBar{
+  z-index: 999;
+  position: fixed;
+  margin-top: 0px;
+}

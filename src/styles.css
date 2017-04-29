@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html{
+  min-height: 100vh;
+  height: 100vh;
+}
+
+body {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  right:0;
+  left:0;
+  background-image: url("/assets/images/rpg_bg.jpg");
+  margin: 0px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
