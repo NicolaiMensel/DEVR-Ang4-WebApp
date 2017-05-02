@@ -1,39 +1,16 @@
 @font-face {
-  font-family: fairy-dust;
-  src: url('/assets/fonts/FairyDustB.ttf') format('truetype');
-}
-@font-face {
-  font-family: barbarian;
-  src: url('/assets/fonts/Barbarian.ttf') format('truetype');
-}
-@font-face {
   font-family: black-knight;
   src: url('/assets/fonts/BlackKnightFLF.ttf') format('truetype');
 }
-@font-face {
-  font-family: celtic;
-  src: url('/assets/fonts/celticmd.ttf') format('truetype');
-}
-@font-face {
-  font-family: lifecraft;
-  src: url('/assets/fonts/LifeCraft_Font.ttf') format('truetype');
-}
-@font-face {
-  font-family: mystery-quest;
-  src: url('/assets/fonts/MysteryQuest-Regular.ttf') format('truetype');
-}
-
 .event-card {
-  width: 680px;
+  width: 800px;
   margin-top: 1px;
-  margin-left: 20px;
   position: relative;
   padding-bottom:4px;
   padding-top:4px;
   padding-left:4px;
   padding-right:4px;
-  background-image: url('/assets/images/wood-texture-tiny.jpg');
-  background-size: 73px 73px;
+  background-image: url('/assets/images/wood-texture-large.jpg');
   border: 2px solid black;
 }
 
@@ -120,10 +97,10 @@ img {
   color: whitesmoke
 }
 .center-div-container{
-  width: 810px;
+  width: 900px;
   background-color: rgba(255,255,255, 0.1);
   z-index: 0;
-  position:absolute;
+  position: absolute;
   margin-top: 4.9vh;
   height: 95.1vh;
 }
@@ -152,6 +129,20 @@ img {
 
 .anchor-left{
   float: left;
+}
+
+.topic-text-content{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.image-card-content{
+  margin-top: 20px;
+}
+
+.content-image{
+  border: 3px solid black;
+  margin-left: -3px;
 }
 
 

@@ -1,0 +1,36 @@
+<div class="main-div-container" fxLayoutAlign="center">
+  <div class="center-div-container" fxLayoutAlign="center">
+    <ul class="topics-main-ul">
+      <li class="event-list">
+        <md-card class="event-card" >
+          <div style="float: right">
+            <p class="default-text">{{getDateAsString(topic.timeStamp)}}</p>
+            <p class="default-text anchor-right">Views: 0</p>
+            <br>
+            <p class="default-text anchor-right">Comments: {{topic.subTopics.length}}</p>
+          </div>
+          <md-card-header>
+            <div md-card-avatar class="example-header-image"></div>
+            <div class="topic-title">
+              <p class="title-text default-text link" (click)="tryShowTopic(topic.id)">{{topic.title}}</p>
+              <md-card-subtitle class="username-card-sub"><p class="default-text anchor-left">By:</p>
+                <p class="default-text link anchor-right">{{topic.user.name}}</p></md-card-subtitle>
+            </div>
+          </md-card-header>
+          <hr>
+          <md-card-content align="center" *ngIf="!!topic.content.imagePath" class="image-card-content">
+            <img class="content-image" src="{{topic.content.imagePath}}">
+          </md-card-content>
+          <md-card-content>
+            <p class="topic-text-content default-text">
+              {{topic.content.message}}
+            </p>
+          </md-card-content>
+        </md-card>
+      </li>
+      <li *ngFor="let comment of topic.subTopics">
+
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,3 +1,5 @@
 <mrr-toolbar></mrr-toolbar>
 <app-topics-view
-[topics]="topics" ></app-topics-view>
+[topics]="topics"
+(tryShowTopicEmitter)="showTopic($event)">
+</app-topics-view>

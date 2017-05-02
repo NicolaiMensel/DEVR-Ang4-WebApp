@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Topic} from "../topic";
 
 @Component({
@@ -11,6 +11,8 @@ export class TopicsViewComponent implements OnInit {
   @Input()
   topics: Array<Topic>
 
+  @Output()
+  tryShowTopicEmitter = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -22,5 +24,10 @@ export class TopicsViewComponent implements OnInit {
   getDateAsString(timeStamp : string){
     var date = new Date(timeStamp);
     return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+  }
+
+  tryShowTopic(id : string)
+  {
+    this.tryShowTopicEmitter.emit(id);
   }
 }

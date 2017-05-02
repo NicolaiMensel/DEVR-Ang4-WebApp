@@ -7,15 +7,15 @@
         <md-card class="event-card">
           <div style="float: right">
             <p class="default-text">{{getDateAsString(topic.timeStamp)}}</p>
-            <p class="default-text" style="float: right">Views: 0</p>
+            <p class="default-text anchor-right">Views: 0</p>
             <br>
-            <p class="default-text" style="float: right">Comments: {{topic.subTopics.length}}</p>
+            <p class="default-text anchor-right" >Comments: {{topic.subTopics.length}}</p>
           </div>
           <md-card-header>
             <div md-card-avatar class="example-header-image"></div>
             <div class="topic-title">
-              <p class="title-text default-text link">{{topic.title}}</p>
-              <md-card-subtitle style="display:inline-block;" class="username-card-sub"><p class="default-text" style="float: left;">By:</p><p style="float: right" class="default-text link">{{topic.user.name}}</p></md-card-subtitle>
+              <p class="title-text default-text link" (click)="tryShowTopic(topic.id)">{{topic.title}}</p>
+              <md-card-subtitle class="username-card-sub"><p class="default-text anchor-left">By:</p><p class="default-text link anchor-right">{{topic.user.name}}</p></md-card-subtitle>
             </div>
           </md-card-header>
           <!--Small Menu Here!-->

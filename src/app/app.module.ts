@@ -30,6 +30,8 @@ import {TopicsViewComponent} from "./topics/show-topics/topics-view.component";
 import { UsersViewComponent } from './users/show-users/users-view.component';
 import { NewsfeedViewComponent } from './newsfeed/newsfeed-view.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { ShowTopicComponent } from './topics/show-topic/show-topic.component';
+import { ShowTopicViewComponent } from './topics/show-topic/show-topic-view.component';
 
 
 export const firebaseConfig = {
@@ -50,6 +52,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'topics', component: TopicsComponent},
   { path: 'create-topic', component: CreateTopicComponent},
+  { path: 'topics/:id', component: ShowTopicComponent},
   { path: 'users', component: UsersComponent},
   { path: 'create-user', component: CreateUserComponent},
   { path: 'users/:$key', component: UpdateUserComponent},
@@ -74,7 +77,9 @@ const routes: Routes = [
     CreateTopicViewComponent,
     UsersViewComponent,
     NewsfeedViewComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
+    ShowTopicComponent,
+    ShowTopicViewComponent
   ],
   imports: [
     BrowserModule,

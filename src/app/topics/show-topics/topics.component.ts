@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Topic, Type} from "../topic";
 import {Timestamp} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'mrr-topics',
@@ -11,7 +12,7 @@ export class TopicsComponent implements OnInit {
 
   topics : Array<Topic>
 
-  constructor() {
+  constructor(private router : Router) {
   }
 
   ngOnInit() {
@@ -29,7 +30,8 @@ export class TopicsComponent implements OnInit {
         ];
   }
 
-  SubmitReview()
+  showTopic(id : string)
   {
+    this.router.navigate(["/topics/" + id]);
   }
 }
