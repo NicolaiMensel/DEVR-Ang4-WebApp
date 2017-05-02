@@ -1,10 +1,16 @@
-import {DatePipe} from "@angular/common";
 import {User} from "../users/user";
+import {Content} from "./content";
+export enum Type {
+  News, General, Support
+}
 export class Topic {
-  id: string;
+  id?: string;
   title : string;
-  user: User;
-  message : string;
-  image: string;
+  type : Type;
   timeStamp : string;
+  user?: User;
+  content : Content;
+  parent? : Topic;
+  subTopics : Topic[];
+
 }

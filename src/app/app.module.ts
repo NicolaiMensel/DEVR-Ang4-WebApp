@@ -8,7 +8,6 @@ import { UsersComponent } from './users/show-users/users.component';
 import {MaterialModule} from "@angular/material";
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { HomeComponent } from './home/home.component'
 import {Routes, RouterModule} from "@angular/router";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LoginComponent } from './auth/login/login.component';
@@ -29,6 +28,8 @@ import { CreateTopicViewComponent } from './topics/create-topic/create-topic-vie
 import {TopicsComponent} from "./topics/show-topics/topics.component";
 import {TopicsViewComponent} from "./topics/show-topics/topics-view.component";
 import { UsersViewComponent } from './users/show-users/users-view.component';
+import { NewsfeedViewComponent } from './newsfeed/newsfeed-view.component';
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 
 export const firebaseConfig = {
@@ -45,7 +46,7 @@ export const firebarebaseLoginConfig = {
 }
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  { path: '', component: NewsfeedComponent},
   { path: 'login', component: LoginComponent},
   { path: 'topics', component: TopicsComponent},
   { path: 'create-topic', component: CreateTopicComponent},
@@ -59,7 +60,7 @@ const routes: Routes = [
     AppComponent,
     UsersComponent,
     ToolbarComponent,
-    HomeComponent,
+    NewsfeedComponent,
     LoginComponent,
     LoginViewComponent,
     CreateUserComponent,
@@ -71,7 +72,9 @@ const routes: Routes = [
     TopicsViewComponent,
     CreateTopicComponent,
     CreateTopicViewComponent,
-    UsersViewComponent
+    UsersViewComponent,
+    NewsfeedViewComponent,
+    NewsfeedComponent
   ],
   imports: [
     BrowserModule,

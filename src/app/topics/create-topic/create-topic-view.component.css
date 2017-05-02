@@ -46,11 +46,14 @@ input[type="file"] {
   cursor: pointer;
 }
 
+.topic-title {
+  font-size: 30px;
+}
+
 .material-icons{
   font-size: 48px;
   color: #3F51B5;
 }
-
 
 .topic-img {
   border: 2px solid black;

@@ -18,4 +18,9 @@ export class TopicsViewComponent implements OnInit {
       this.topics = new Array<Topic>();
     }
   }
+
+  getDateAsString(timeStamp : string){
+    var date = new Date(timeStamp);
+    return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+  }
 }

@@ -1,32 +1,26 @@
-<button md-button class="create-topic-btn" routerLink="/create-topic">Create New</button>
+<button md-button class="create-topic-btn" routerLink="/create-topic" xmlns="http://www.w3.org/1999/html">Create New</button>
 <div class="main-div-container" fxLayoutAlign="center">
 
   <div class="center-div-container">
-<ul class="topics-main-ul" >
-  <li *ngFor="let topic of topics" class="event-list">
-    <md-card class="event-card">
-      <md-card-header>
-        <div md-card-avatar class="example-header-image"></div>
-        <md-card-title>{{topic.title}}</md-card-title>
-        <md-card-subtitle>{{topic.user.name}}</md-card-subtitle>
-      </md-card-header>
-      <md-card-content class="image-card-content">
-        <img md-card-image src="{{topic.image}}">
-      </md-card-content>
-      <md-card-content>
-        <p>
-          {{topic.message}}
-        </p>
-        <p>
-          {{topic.timeStamp}}
-        </p>
-      </md-card-content>
-      <md-card-actions class="topic-btn-container">
-        <button md-button class="info-btn">INFO</button>
-      </md-card-actions>
-      <!--Small Menu Here!-->
-    </md-card>
-  </li>
-</ul>
+    <ul class="topics-main-ul">
+      <li *ngFor="let topic of topics" class="event-list">
+        <md-card class="event-card">
+          <div style="float: right">
+            <p class="default-text">{{getDateAsString(topic.timeStamp)}}</p>
+            <p class="default-text" style="float: right">Views: 0</p>
+            <br>
+            <p class="default-text" style="float: right">Comments: {{topic.subTopics.length}}</p>
+          </div>
+          <md-card-header>
+            <div md-card-avatar class="example-header-image"></div>
+            <div class="topic-title">
+              <p class="title-text default-text link">{{topic.title}}</p>
+              <md-card-subtitle style="display:inline-block;" class="username-card-sub"><p class="default-text" style="float: left;">By:</p><p style="float: right" class="default-text link">{{topic.user.name}}</p></md-card-subtitle>
+            </div>
+          </md-card-header>
+          <!--Small Menu Here!-->
+        </md-card>
+      </li>
+    </ul>
   </div>
 </div>

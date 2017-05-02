@@ -53,7 +53,7 @@ export class CreateTopicViewComponent implements OnInit {
 
   saveNewImage(){
     this.changingImage = false;
-    this.newTopic.image = this.data.image
+    this.newTopic.content.imagePath = this.data.image
   }
 
   fileChangeListener($event) {

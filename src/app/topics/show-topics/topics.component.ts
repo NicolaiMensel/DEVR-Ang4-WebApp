@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Topic} from "../topic";
+import {Topic, Type} from "../topic";
+import {Timestamp} from "rxjs";
 
 @Component({
   selector: 'mrr-topics',
@@ -14,15 +15,18 @@ export class TopicsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.topics = [
-      {id:'alshdfkjgsdfas', title:'Error 404', image:'assets/images/aarhus-havn.jpg', message:'Much bug less fix.. need halp bujdha bjlkdaujkeu eakeku klaelk euae byeh bkjadjhfjh',
-    timeStamp: '2017-25-21', user: {$key:'awedf', name:'lars', age:21, email:'ajkhbsef@hluakgfdsj.com', password:'1234'}},
-      {id:'alshdfkjgsdfas', title:'Error 404', image:'assets/images/aarhus-havn.jpg', message:'Much bug less fix.. need halp bujdha bjlkdaujkeu eakeku klaelk euae byeh bkjadjhfjh',
-        timeStamp: '2017-25-21', user: {$key:'awedf', name:'lars', age:21, email:'ajkhbsef@hluakgfdsj.com', password:'1234'}},
-      {id:'alshdfkjgsdfas', title:'Error 404', image:'assets/images/aarhus-havn.jpg', message:'Much bug less fix.. need halp bujdha bjlkdaujkeu eakeku klaelk euae byeh bkjadjhfjh',
-        timeStamp: '2017-25-21', user: {$key:'awedf', name:'lars', age:21, email:'ajkhbsef@hluakgfdsj.com', password:'1234'}}
+    this.createTopics();
+  }
 
-    ];
+  createTopics() {
+    this.topics = [
+      {title:'Forum has been created!!', timeStamp: new Date().toString(), type : Type.News, user: {name:'SirKalrin[Admin]', age:69, email:'SirKalrin.Supp@DExplorer.VR', password:'admin'},
+        content : {message : "Greetings players and followers! It's now possible to use the forum to follow news, post about issues, or general discussions. Have fun and be constructive!"}, subTopics: []},
+      {title:'Do you like the game concept?', timeStamp: new Date().toString(), type : Type.General, user: {name:'SirMensel[Admin]', age:69, email:'SirMensel.Supp@DExplorer.VR', password:'admin'},
+        content : {message : "We'd like to hear if you have any ideas to our game, and if there is anything horrible!!"}, subTopics: []},
+      {title:'I cannot download the game!!', timeStamp: new Date().toString(), type : Type.Support, user: {name:'Tim Andersen', age:12, email:'Tima@gmail.com', password:'1234'},
+        content : {message : "I cannot locate the game on Google Play Store.. what to do?!?!"}, subTopics: []}
+        ];
   }
 
   SubmitReview()
