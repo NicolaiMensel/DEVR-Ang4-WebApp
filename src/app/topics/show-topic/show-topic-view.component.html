@@ -9,6 +9,7 @@
             <p class="default-text anchor-right">Views: 0</p>
             <br>
             <p class="default-text anchor-right">Comments: {{topic.subTopics.length}}</p>
+            <button md-raised-button class="submit-topic-btn anchor-right-buttom" (click)="onClick(topic)">Reply</button>
           </div>
           <md-card-header>
             <div md-card-avatar class="example-header-image"></div>
@@ -23,14 +24,12 @@
             <img class="content-image" src="{{topic.content.imagePath}}">
           </md-card-content>
           <md-card-content>
-            <p class="topic-text-content default-text">
-              {{topic.content.message}}
-            </p>
+            <pre class="topic-text-content default-text">{{topic.content.message}}</pre>
           </md-card-content>
         </md-card>
         <!--Main Topic Reply Here-->
         <form (submit)="addComment(newComment, topic)">
-          <md-card class="event-card">
+          <md-card class="event-card" *ngIf="hideme[topic.id] == false">
             <div class="comment-input-container">
               <md-input-container style="margin-top: 5px;" class="md-block" [fxLayout]="'column'" >
         <textarea mdInput
@@ -52,23 +51,21 @@
         <md-card class="event-card">
           <div style="float: right">
             <p class="default-text">{{getDateAsString(comment.timeStamp)}}</p>
-            <button md-raised-button class="submit-topic-btn anchor-right-buttom">Reply</button>
+            <button md-raised-button class="submit-topic-btn anchor-right-buttom" (click)="onClick(comment)">Reply</button>
           </div>
           <md-card-header>
             <div md-card-avatar class="example-header-image"></div>
             <div class="topic-title" fxLayoutAlign="center center">
-              <p  class="title-text default-text">{{comment.user.name}}</p>
+              <p class="title-text default-text">{{comment.user.name}}</p>
             </div>
           </md-card-header>
           <md-card-content>
-            <p class="topic-text-content default-text">
-              {{comment.content.message}}
-            </p>
+            <pre class="topic-comment-content default-text">{{comment.content.message}}</pre>
           </md-card-content>
         </md-card>
         <!--Comment Reply-->
         <form (submit)="addComment(subComment, comment)">
-          <md-card class="event-card" style="width: 93.5%; float: right;">
+          <md-card class="event-card" style="width: 93.5%; float: right;" *ngIf="hideme[comment.id] == false">
             <div class="comment-input-container">
               <md-input-container style="margin-top: 5px;" class="md-block" [fxLayout]="'column'" >
         <textarea mdInput
@@ -99,9 +96,7 @@
             </div>
           </md-card-header>
           <md-card-content>
-            <p class="topic-text-content default-text">
-              {{subComment.content.message}}
-            </p>
+            <pre class="topic-subcomment-content default-text">{{subComment.content.message}}</pre>
           </md-card-content>
         </md-card>
       </li>

@@ -24,6 +24,7 @@
   padding-right:4px;
   background-image: url('/assets/images/wood-texture-large.jpg');
   border: 2px solid black;
+
 }
 
 .username-card-sub {
@@ -123,11 +124,9 @@ img {
 }
 .center-div-container{
   width: 900px;
-  background-color: rgba(255,255,255, 0.1);
   z-index: 0;
-  position: absolute;
   margin-top: 4.9vh;
-  height: 95.1vh;
+  height: 100%;
 }
 .main-div-container{
   width: 100%;
@@ -159,6 +158,25 @@ img {
 .topic-text-content{
   padding-left: 25px;
   padding-right: 25px;
+  padding-bottom: 35px;
+  padding-top:5px;
+  white-space: pre-wrap;
+}
+
+.topic-comment-content{
+  padding-left: 25px;
+  padding-right: 90px;
+  padding-bottom: 5px;
+  padding-top:5px;
+  white-space: pre-wrap;
+}
+
+.topic-subcomment-content{
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 5px;
+  padding-top:5px;
+  white-space: pre-wrap;
 }
 
 .image-card-content{
