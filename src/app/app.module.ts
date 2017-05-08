@@ -32,6 +32,7 @@ import { NewsfeedViewComponent } from './newsfeed/newsfeed-view.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { ShowTopicComponent } from './topics/show-topic/show-topic.component';
 import { ShowTopicViewComponent } from './topics/show-topic/show-topic-view.component';
+import {TopicService} from "./topics/topic.service";
 
 
 export const firebaseConfig = {
@@ -93,7 +94,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(firebaseConfig, firebarebaseLoginConfig)
   ],
-  providers: [UsersService, AuthService],
+  providers: [UsersService, AuthService, TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
