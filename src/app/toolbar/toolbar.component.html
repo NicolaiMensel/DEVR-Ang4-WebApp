@@ -1,11 +1,11 @@
 <md-toolbar class="mainMenuBar" fxLayoutAlign="center">
-  <button routerLink="/" md-button><p>Home</p></button>
-  <button routerLink="/topics" md-button><p>Forum</p></button>
+  <button routerLink="/" md-button>Home</button>
+  <button routerLink="/topics" md-button>Forum</button>
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space"></span>
-  <button routerLink="/users" md-button><p>Accounts</p></button>
-  <button *ngIf="!user" md-button routerLink="/login"><p>Sign in</p><fa [name]="'sign-in'" size=1></fa></button>
+  <button routerLink="/users" md-button>Accounts</button>
+  <button *ngIf="!user" md-button routerLink="/login">Sign in<fa [name]="'sign-in'" size=1></fa></button>
   <button *ngIf="user" md-icon-button [mdMenuTriggerFor]="menu">
     <fa [name]="'ellipsis-v'"></fa>
   </button>

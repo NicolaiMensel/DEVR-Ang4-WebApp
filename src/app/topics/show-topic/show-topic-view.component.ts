@@ -56,7 +56,7 @@ export class ShowTopicViewComponent implements OnInit {
   }
 
   initTopicTemplates(){
-    this.newComment = new Topic()
+    this.newComment = new Topic();
     this.newComment.content = new Content();
     this.subComment = new Topic();
     this.subComment.content = new Content();

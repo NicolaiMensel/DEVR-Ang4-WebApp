@@ -11,23 +11,25 @@ flex: 1 1 auto;
   z-index: 1;
   position: fixed;
   margin-top: 0px;
-  background-image: url('/assets/images/wood-texture-large.jpg');
+  /**background-image: url('/assets/images/wood-texture-large.jpg');**/
+  background-color: whitesmoke;
 }
 
 .end-line{
   z-index: 998;
   position: fixed;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 62px;
+  border: 1px solid black;
 }
 
-button p{
+button {
   font-family: black-knight;
-  font-size: 28px;
-  color: whitesmoke;
+  font-size: 36px;
+  color: black;
 }
 
 md-toolbar{
-  background-color: whitesmoke;
+  background-color: white;
 }
 
