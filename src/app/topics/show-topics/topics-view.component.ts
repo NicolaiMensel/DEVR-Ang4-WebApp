@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Topic} from "../topic";
+import {Observable} from "rxjs/Observable";
 
 @Component({
   selector: 'app-topics-view',

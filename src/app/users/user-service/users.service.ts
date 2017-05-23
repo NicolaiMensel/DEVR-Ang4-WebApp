@@ -30,3 +30,4 @@ export class UsersService {
     this.af.database.list('/users').update(user.$key, user);
   }
 }
+

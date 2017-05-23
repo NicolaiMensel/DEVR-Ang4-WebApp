@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, RouterModule} from "@angular/router";
+import {UsersService} from "../../users/user-service/users.service";
+import {TopicService} from "../topic.service";
+import {logging} from "selenium-webdriver";
+import Logger = logging.Logger;
 
 @Component({
   selector: 'app-create-topic',
@@ -8,15 +12,17 @@ import {Router, RouterModule} from "@angular/router";
 })
 export class CreateTopicComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private topicService : TopicService) {
+  }
 
   ngOnInit() {
+
   }
 
   createForum(topic)
   {
-    //this.userService.addUser(user);
-    this.router.navigate(["users"]);
+    this.topicService.create(topic);
+    this.router.navigate(["topics"]);
   }
 
 }

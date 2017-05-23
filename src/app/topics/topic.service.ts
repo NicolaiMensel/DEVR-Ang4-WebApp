@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Headers, Http} from "@angular/http";
 import 'rxjs/add/operator/toPromise';
 import {Topic} from './topic';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class TopicService {
@@ -21,24 +22,36 @@ return this.http
     //{"title": "why wont the game start?!","topicType": "Support","content": "wah i have amd and now game wont start","parent": "abc122","subTopics": "abc124"},
   {headers: this.headers})
   .toPromise()
-  .then(res => res.json().data as Topic)
+  .then(res => res.json() as Topic)
   .catch(this.handleError);
   }
 
   //return all topics from the database. Can be called even if a user is not authenticated.
+    getTopics(): Observable<Topic[]> {
+    /*return Observable.fromPromise(this.http.get(this.apiUrl)
+      .toPromise()
+      .then(response => response.json() as Topic[]))
+      .catch(this.handleError);*/
+    return this.http
+      .get(this.apiUrl)
+      .map(response => response.json() as Topic[])
+  }
+/*  //return all topics from the database. Can be called even if a user is not authenticated.
   getTopics(): Promise<Topic[]> {
     return this.http.get(this.apiUrl)
       .toPromise()
       .then(response => response.json().data as Topic[])
       .catch(this.handleError);
-  }
+  }*/
+
+
 
   //returns a topic with matching id from the database, if it exists. Else writes an error in the browsers console.
   getTopic(id: string): Promise<Topic> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Topic)
+      .then(response => response.json() as Topic)
       .catch(this.handleError);
   }
 
