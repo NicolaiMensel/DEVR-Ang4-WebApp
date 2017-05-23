@@ -14,7 +14,7 @@ import {CropperSettings} from "ng2-img-cropper";
 export class UsersComponent implements OnInit {
 
 
-  users: Observable<User[]>;
+  users: Promise<User[]>;
 
 
 
@@ -35,7 +35,7 @@ export class UsersComponent implements OnInit {
 
   deleteUser(user: User)
   {
-    this.userService.deleteUser(user);
+    this.userService.deleteUser(user, "");
   }
 
   updateUser(user: User)
