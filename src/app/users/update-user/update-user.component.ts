@@ -11,7 +11,7 @@ import {Observable} from "rxjs";
 })
 export class UpdateUserComponent implements OnInit {
 
-  user:  Observable<User>;
+  user:  Promise<User>;
 
   constructor(private route : ActivatedRoute, private userService: UsersService) {
   }
@@ -22,9 +22,9 @@ export class UpdateUserComponent implements OnInit {
     });
   }
 
-  updateUser(user: User)
+  updateUser(user: User, token)
   {
-    this.userService.updateUser(user);
+    this.userService.updateUser(user, token);
   }
 
 
