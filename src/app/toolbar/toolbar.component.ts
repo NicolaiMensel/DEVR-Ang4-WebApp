@@ -20,7 +20,7 @@ export class ToolbarComponent implements OnInit {
   {
   }
 
-  logout()
+  /*logout()
   {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['login']).then(() => {
@@ -29,12 +29,12 @@ export class ToolbarComponent implements OnInit {
         });
       });
     });
-  }
+  }*/
 
   ngOnInit() {
-    this.authService.currentUser().subscribe(user => {
+    /*this.authService.currentUser().subscribe(user => {
       this.user = user;
-    })
+    })*/
   }
 
 }
