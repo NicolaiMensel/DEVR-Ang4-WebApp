@@ -1,16 +1,15 @@
 import {User} from "../users/user";
 import {Content} from "./content";
-export enum Type {
+export enum TopicTypes {
   News, General, Support
 }
 export class Topic {
   id?: string;
   title : string;
-  type : Type;
+  topicType : TopicTypes;
   timeStamp : string;
   user?: User;
-  content : Content;
-  parent? : Topic;
+  message: string;
+  imageUrl: string;
   subTopics : Topic[];
-
 }
