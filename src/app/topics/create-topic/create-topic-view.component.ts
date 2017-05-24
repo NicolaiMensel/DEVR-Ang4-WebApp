@@ -18,7 +18,7 @@ export class CreateTopicViewComponent implements OnInit {
   newTopic: Topic;
   changingImage : boolean;
 
-  @Output('createForum')
+  @Output()
   tryCreateEmitter = new EventEmitter();
 
 
@@ -43,6 +43,7 @@ export class CreateTopicViewComponent implements OnInit {
   }
 
   tryCreateForum(){
+    console.log("yaaaas2")
       this.tryCreateEmitter.emit(this.newTopic);
   }
 
@@ -53,7 +54,7 @@ export class CreateTopicViewComponent implements OnInit {
 
   saveNewImage(){
     this.changingImage = false;
-    this.newTopic.content.imagePath = this.data.image
+    this.newTopic.imageUrl = this.data.image
   }
 
   fileChangeListener($event) {

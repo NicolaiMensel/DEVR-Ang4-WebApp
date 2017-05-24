@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {User} from "../user";
 import {Headers, Http} from "@angular/http";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class UsersService {
@@ -27,12 +28,16 @@ export class UsersService {
       .catch(this.handleError);
   }
 
-  getUser(id: string): Promise<User> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json().data as User)
+  getUser(id: string): Observable<User> {
+    return this.http
+      .get(this.apiUrl + "/" + id )
+      .map(response => response.json() as User)
       .catch(this.handleError);
+    // const url = `${this.apiUrl}/${id}`;
+    // return this.http.get(url)
+    //   .toPromise()
+    //   .then(response => response.json().data as User)
+    //   .catch(this.handleError);
   }
 
   deleteUser(user: User, token: String): Promise<User> {

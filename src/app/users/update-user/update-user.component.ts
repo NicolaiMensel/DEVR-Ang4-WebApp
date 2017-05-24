@@ -17,9 +17,9 @@ export class UpdateUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params =>{
-      this.user = this.userService.getUser(params['$key']);
-    });
+    // this.route.params.subscribe(params =>{
+    //   // this.user = this.userService.getUser(params['$key']);
+    // });
   }
 
   updateUser(user: User, token)

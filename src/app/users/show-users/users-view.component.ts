@@ -10,7 +10,6 @@ import {User} from "../user";
 export class UsersViewComponent implements OnInit {
 
   users : Observable<User[]>;
-
   @Output()
   tryDeleteEmitter = new EventEmitter();
   @Output()
@@ -19,7 +18,9 @@ export class UsersViewComponent implements OnInit {
   tryCreateEmitter = new EventEmitter();
 
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }

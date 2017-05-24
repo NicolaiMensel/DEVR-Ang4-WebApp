@@ -1,18 +1,20 @@
 
 <div class="main-div-container" fxLayoutAlign="center">
   <div class="center-div-container" fxLayoutAlign="center">
-    <ul class="topics-main-ul">
+    <ul class="topics-main-ul" *ngIf="!!topic">
       <li class="event-list">
         <md-card class="event-card">
           <div style="float: right">
             <p class="default-text">{{getDateAsString(topic.timeStamp)}}</p>
             <p class="default-text anchor-right">Views: 0</p>
             <br>
-            <p class="default-text anchor-right">Comments: {{topic.subTopics.length}}</p>
+            <p class="default-text anchor-right">Comments: {{ topic.subTopics ? topic.subTopics.length : "0" }}</p>
             <button md-raised-button class="submit-topic-btn anchor-right-buttom" (click)="onClick(topic)">Reply</button>
           </div>
-          <md-card-header>
-            <div md-card-avatar class="example-header-image"></div>
+          <md-card-header >
+            <div md-card-avatar class="example-header-image">
+              <img class="content-image" src="{{topic.user.picture}}">
+            </div>
             <div class="topic-title">
               <p class="title-text default-text">{{topic.title}}</p>
               <md-card-subtitle class="username-card-sub"><p class="default-text anchor-left">By:</p>
@@ -20,15 +22,15 @@
             </div>
           </md-card-header>
           <hr>
-          <md-card-content align="center" *ngIf="!!topic.content.imagePath" class="image-card-content">
-            <img class="content-image" src="{{topic.content.imagePath}}">
+          <md-card-content align="center" *ngIf="!!topic.imageUrl" class="image-card-content">
+            <img class="content-image" src="{{topic.imageUrl}}">
           </md-card-content>
           <md-card-content>
-            <pre class="topic-text-content default-text">{{topic.content.message}}</pre>
+            <pre class="topic-text-content default-text">{{topic.message}}</pre>
           </md-card-content>
         </md-card>
         <!--Main Topic Reply Here-->
-        <form (submit)="addComment(newComment, topic)">
+        <form (submit)="tryAddComment(newComment, topic)">
           <md-card class="event-card" *ngIf="hideme[topic.id] == false">
             <div class="comment-input-container">
               <md-input-container style="margin-top: 5px;" class="md-block" [fxLayout]="'column'" >
@@ -37,7 +39,7 @@
                   md-select-on-focus
                   name="messageInput"
                   mdInput placeholder="Write a comment"
-                  [(ngModel)]="newComment.content.message">
+                  [(ngModel)]="newComment.message">
           </textarea>
 
               </md-input-container>
@@ -54,17 +56,19 @@
             <button md-raised-button class="submit-topic-btn anchor-right-buttom" (click)="onClick(comment)">Reply</button>
           </div>
           <md-card-header>
-            <div md-card-avatar class="example-header-image"></div>
+            <div md-card-avatar class="example-header-image">
+              <img class="content-image" src="{{comment.user.picture}}">
+            </div>
             <div class="topic-title" fxLayoutAlign="center center">
               <p class="title-text default-text">{{comment.user.name}}</p>
             </div>
           </md-card-header>
           <md-card-content>
-            <pre class="topic-comment-content default-text">{{comment.content.message}}</pre>
+            <pre class="topic-comment-content default-text">{{comment.message}}</pre>
           </md-card-content>
         </md-card>
         <!--Comment Reply-->
-        <form (submit)="addComment(subComment, comment)">
+        <form (submit)="tryAddComment(subComment, comment)">
           <md-card class="event-card" style="width: 93.5%; float: right;" *ngIf="hideme[comment.id] == false">
             <div class="comment-input-container">
               <md-input-container style="margin-top: 5px;" class="md-block" [fxLayout]="'column'" >
@@ -74,7 +78,7 @@
                   name="messageInput"
                   mdInput placeholder="Write a comment"
                   class="small-text-area"
-                  [(ngModel)]="subComment.content.message">
+                  [(ngModel)]="subComment.message">
           </textarea>
 
               </md-input-container>
@@ -85,18 +89,20 @@
         <!--SubComments Here-->
       <ul>
       <li class="event-list" *ngFor="let subComment of comment.subTopics">
-        <md-card class="subEvent-card">
+        <md-card class="subEvent-card" *ngIf="subComment.user">
           <div style="float: right">
             <p class="default-text">{{getDateAsString(subComment.timeStamp)}}</p>
           </div>
           <md-card-header>
-            <div md-card-avatar class="example-header-image"></div>
+            <div md-card-avatar class="example-header-image">
+              <img class="content-image" src="{{subComment.user.picture}}">
+            </div>
             <div class="topic-title" fxLayoutAlign="center center">
               <p class="title-text default-text">{{subComment.user.name}}</p>
             </div>
           </md-card-header>
           <md-card-content>
-            <pre class="topic-subcomment-content default-text">{{subComment.content.message}}</pre>
+            <pre class="topic-subcomment-content default-text">{{subComment.message}}</pre>
           </md-card-content>
         </md-card>
       </li>

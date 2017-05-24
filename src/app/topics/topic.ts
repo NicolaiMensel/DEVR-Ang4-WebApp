@@ -11,5 +11,5 @@ export class Topic {
   user?: User;
   message: string;
   imageUrl: string;
-  subTopics : Topic[];
+  subTopics : any[];
 }

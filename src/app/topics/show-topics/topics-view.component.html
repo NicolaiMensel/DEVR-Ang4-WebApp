@@ -12,7 +12,9 @@
             <p class="default-text anchor-right" >Comments: {{topic.subTopics.length}}</p>
           </div>
           <md-card-header>
-            <div md-card-avatar class="example-header-image"></div>
+            <div md-card-avatar class="example-header-image">
+              <img class="content-image" src="{{topic.user.picture}}">
+            </div>
             <div class="topic-title">
               <p class="title-text default-text link" (click)="tryShowTopic(topic.id)">{{topic.title}}</p>
               <md-card-subtitle class="username-card-sub"><p class="default-text anchor-left">By:</p><p class="default-text link anchor-right">{{topic.user.name}}</p></md-card-subtitle>

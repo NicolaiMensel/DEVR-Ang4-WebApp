@@ -1,4 +1,5 @@
 <mrr-toolbar></mrr-toolbar>
 <app-show-topic-view
-  [topic]="topic">
+  [topic]="topic"
+  (tryAddCommentEmitter)="addComment($event)">
 </app-show-topic-view>

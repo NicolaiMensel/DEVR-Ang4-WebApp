@@ -21,6 +21,7 @@ export class CreateTopicComponent implements OnInit {
 
   createForum(topic)
   {
+    console.log("yay hit da spot");
     this.topicService.create(topic);
     this.router.navigate(["topics"]);
   }

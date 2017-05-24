@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Topic} from "../topic";
 import {Observable} from "rxjs/Observable";
+import {Debug} from "ng2-img-cropper/src/exif";
 
 @Component({
   selector: 'app-topics-view',
@@ -29,6 +30,7 @@ export class TopicsViewComponent implements OnInit {
 
   tryShowTopic(id : string)
   {
+    Debug.log("ID is :" + id.toString());
     this.tryShowTopicEmitter.emit(id);
   }
 }

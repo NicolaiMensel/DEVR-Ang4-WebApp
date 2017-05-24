@@ -16,13 +16,13 @@ export class TopicService {
   }
 
   //Takes a topic, writes it to the API. Writes an error in the console of the browser if it fails.
-  create(newTopic: Topic): Promise<Topic> {
-return this.http
+  create(newTopic: Topic): Observable<Topic> {
+    console.log(localStorage.getItem('token'))
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Bearer " + localStorage.getItem('token').substring(12, 158));
+  return this.http
   .post(this.apiUrl, JSON.stringify(newTopic),
-    //{"title": "why wont the game start?!","topicType": "Support","content": "wah i have amd and now game wont start","parent": "abc122","subTopics": "abc124"},
-  {headers: this.headers})
-  .toPromise()
-  .then(res => res.json() as Topic)
+  {headers: headers})
   .catch(this.handleError);
   }
 
@@ -47,12 +47,17 @@ return this.http
 
 
   //returns a topic with matching id from the database, if it exists. Else writes an error in the browsers console.
-  getTopic(id: string): Promise<Topic> {
-    const url = `${this.apiUrl}/${id}`;
-    return this.http.get(url)
-      .toPromise()
-      .then(response => response.json() as Topic)
-      .catch(this.handleError);
+  getTopic(id: string): Observable<Topic> {
+    return this.http
+      .get(this.apiUrl + "/" + id )
+      .map(response => response.json() as Topic)
+
+
+    // const url = `${this.apiUrl}/${id}`;
+    // return this.http.get(url)
+    //   .toPromise()
+    //   .then(response => response.json() as Topic)
+    //   .catch(this.handleError);
   }
 
   //Updates the topic in the database with matching id if any. Else writes an error in the browsers console.
@@ -64,6 +69,15 @@ return this.http
       .then(() => topic)
       .catch(this.handleError);
   }
+
+  addTopic(parentId, topic: Topic) {
+    const url = `${this.apiUrl}/${parentId}/subtopics`;
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Bearer " + localStorage.getItem('token').substring(12, 158));
+    this.http
+      .post(this.apiUrl, JSON.stringify(topic), {headers : headers})
+        .catch(this.handleError)
+}
 
   //Writes an error message in the browsers console.
   private handleError(error: any): Promise<any> {

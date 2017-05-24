@@ -37,6 +37,6 @@ export class TopicsComponent implements OnInit {
 
   showTopic(id : string)
   {
-    this.router.navigate(["/topics/" + id]);
+    this.router.navigate(['/topics/', id]);
   }
 }
