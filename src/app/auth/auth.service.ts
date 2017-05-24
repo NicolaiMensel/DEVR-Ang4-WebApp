@@ -18,8 +18,14 @@ private apiUrl = 'http://127.0.0.1:9000/auth';
         let token = response.json() && response.json().token;
         if (token) {
           this.token = token;
+          localStorage.setItem('token', JSON.stringify({token: token }));
           return this.token;
         }
       });
+  }
+  logout(): void {
+    // clear token remove user from local storage to log user out
+    this.token = null;
+    localStorage.removeItem('token');
   }
 }

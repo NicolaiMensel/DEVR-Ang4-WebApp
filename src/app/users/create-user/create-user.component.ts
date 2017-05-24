@@ -14,9 +14,9 @@ export class CreateUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  register(user, token)
+  register(user)
   {
-    this.userService.createUser(user, token);
+    this.userService.createUser(user);
     this.router.navigate(["users"]);
   }
 

@@ -22,9 +22,9 @@ export class UpdateUserComponent implements OnInit {
     });
   }
 
-  updateUser(user: User, token)
+  updateUser(user: User)
   {
-    this.userService.updateUser(user, token);
+    this.userService.updateUser(user);
   }
 
 

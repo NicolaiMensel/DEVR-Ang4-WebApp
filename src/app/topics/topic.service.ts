@@ -8,18 +8,16 @@ export class TopicService {
 
   private apiUrl = 'http://127.0.0.1:9000/topics';
 
-  //Contains a validated bearer-token for the API
-  private headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5MDg0M2I2NWY3MzQ5MjRhODY1YWVlMSIsImlhdCI6MTQ5MzcxMzg5NX0.9Ud9Z4zADQZq7iNHqldF9PkvkUlBGRs_uzbB29Zvtq8'});
-
   constructor(private http: Http) {
   }
 
   //Takes a topic, writes it to the API. Writes an error in the console of the browser if it fails.
   create(newTopic: Topic): Promise<Topic> {
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Bearer " + localStorage.getItem('token').substring(12, 158));
 return this.http
   .post(this.apiUrl, JSON.stringify(newTopic),
-    //{"title": "why wont the game start?!","topicType": "Support","content": "wah i have amd and now game wont start","parent": "abc122","subTopics": "abc124"},
-  {headers: this.headers})
+  {headers: headers})
   .toPromise()
   .then(res => res.json().data as Topic)
   .catch(this.handleError);
@@ -44,9 +42,11 @@ return this.http
 
   //Updates the topic in the database with matching id if any. Else writes an error in the browsers console.
   update(topic: Topic): Promise<Topic> {
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Bearer " + localStorage.getItem('token').substring(12, 158));
     const url = `${this.apiUrl}/${topic.id}`;
     return this.http
-      .put(url, JSON.stringify(topic), {headers: this.headers})
+      .put(url, JSON.stringify(topic), {headers: headers})
       .toPromise()
       .then(() => topic)
       .catch(this.handleError);

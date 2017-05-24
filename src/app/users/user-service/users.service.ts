@@ -11,10 +11,12 @@ export class UsersService {
   }
 
   //Writes the given user to the API. Writes an error in the console of the browser if it fails.
-  createUser(newUser: User, token: String): Promise<User> {
+  createUser(newUser: User): Promise<User> {
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Bearer " + localStorage.getItem('token').substring(10,158));
     return this.http
       .post(this.apiUrl, JSON.stringify(newUser),
-        {headers: new Headers(token)})
+        {headers: headers})
       .toPromise()
       .then(res => res.json().data as User)
       .catch(this.handleError);
@@ -35,19 +37,23 @@ export class UsersService {
       .catch(this.handleError);
   }
 
-  deleteUser(user: User, token: String): Promise<User> {
+  deleteUser(user: User): Promise<User> {
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Bearer " + localStorage.getItem('token').substring(10,158));
     const url = `${this.apiUrl}/${user.id}`;
     return this.http.delete(url,
-      {headers: new Headers(token)})
+      {headers: headers})
       .toPromise()
       .then(response => response.json().data as User)
       .catch(this.handleError);
   }
 
-  updateUser(user: User, token: String): Promise<User> {
+  updateUser(user: User): Promise<User> {
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Bearer " + localStorage.getItem('token').substring(10,158));
     const url = `${this.apiUrl}/${user.id}`;
     return this.http
-      .put(url, JSON.stringify(user), {headers: new Headers(token)})
+      .put(url, JSON.stringify(user), {headers: headers})
       .toPromise()
       .then(() => user)
       .catch(this.handleError);

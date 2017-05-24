@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.request = this.authService
       .login(user.email, user.password)
       .subscribe((lUser) => {
-        if(lUser)
+        if(lUser.length > 0)
         {
           this.loginError=null;
           this.router.navigate(['/']).then(() => {
